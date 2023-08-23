@@ -84,7 +84,7 @@ const modificarDatos = async() =>{
     // console.log("\nPARES:\n");
     // console.log(JSON.stringify(pares, null, 2));
 
-    console.log("\nMODIFICADOS:\n");
+    console.log("\nMODIFICADOS (Solo pares y type personalizado):\n");
     console.log(JSON.stringify(modificados, null, 2));
     return modificados
 }
@@ -113,6 +113,7 @@ const arreglarDatos = async() =>{
 }
 
 arreglarDatos().then(resultado => {
+    console.log("\nARREGLO DE TIPO DE DATO PERSONALIZADO\n");
     console.log(JSON.stringify(resultado, null, 2));
 });
 
