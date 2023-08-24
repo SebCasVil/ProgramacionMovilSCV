@@ -1,0 +1,87 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(194, 196, 231);
+    width: 100vw; 
+    height: 100vh;
+    
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px; 
+    color: #3a3938; 
+    line-height: 1.5;
+    text-align: center;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.primero{
+    background-color: whitesmoke;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+}
+#img2{
+    width: 600px;
+    height: 450px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.textoDiv{
+    padding: 10px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#iconoMus{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.plan{
+    background-color: rgb(220, 238, 255);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+}
+
+.descripcion{
+    margin-right: 100px;
+    margin-left: 20px;
+}
+
+#btn1{
+    color: aliceblue;
+    background-color: rgb(67, 67, 100);
+    border-radius: 10px;
+    padding: 10px 20px;
+    border: none;
+    width: 400px;
+
+}
+
+#btn2{
+    color: gray;
+    background-color: whitesmoke;
+    padding: 10px 20px;
+    border: none;
+    font-weight: bold;
+
+}
