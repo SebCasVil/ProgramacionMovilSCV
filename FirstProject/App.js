@@ -1,6 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,  Dimensions, Image, TextInput } from 'react-native';
-import { StyledText } from './src/components/StyledText';
 import Login from './src/screens/Login';
 
 
@@ -10,17 +9,7 @@ const{height, width} = Dimensions.get('screen')
 
   return (
     <View style={styles.container}>
-      {/* <Image source={{
-        uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA5TJkpaC24QdQuYP0U4X2Prg_nkdVVQggjDmLq76COb5Yd1G71el9NnEXFloDdZmonno&usqp=CAU',
-        width: 100,
-        height: 100
-      }}/>
-      <TextInput style={styles.input} placeholder='Introduce texto' placeholderTextColor={'blue'}/> */}
-
-      
       <Login/>
-
-
     </View>
   );
 }
