@@ -1,4 +1,5 @@
 import { Text, StyleSheet, View } from "react-native";
+import { THEME } from "../../theme/colors";
 export const LoginHeader = () => {
     return(
      <View style={styles.header}>
@@ -11,7 +12,7 @@ export const LoginHeader = () => {
 const styles = StyleSheet.create({
     header: {
         flex: 0.2,
-        backgroundColor: '#977BF4',
+        backgroundColor: THEME.COLORS.PURPLE,
         alignItems: 'flex-start',
         justifyContent: 'flex-end',
         padding: 20
