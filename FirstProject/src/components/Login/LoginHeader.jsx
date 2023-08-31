@@ -12,7 +12,7 @@ export const LoginHeader = () => {
 const styles = StyleSheet.create({
     header: {
         flex: 0.2,
-        backgroundColor: THEME.COLORS.PURPLE,
+        backgroundColor: THEME.COLORS.PURPLE.DARK,
         alignItems: 'flex-start',
         justifyContent: 'flex-end',
         padding: 20
