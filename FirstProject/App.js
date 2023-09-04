@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,  Dimensions, Image, TextInput } from 'react-native';
-import Login from './src/screens/Login';
+import Page from './src/screens/Page';
 
 
 // Exportado por defecto (Unicamente se importa esta función cuando se intente importar en otro archivo)
@@ -9,7 +9,7 @@ const{height, width} = Dimensions.get('screen')
 
   return (
     <View style={styles.container}>
-      <Login/>
+      <Page/>
     </View>
   );
 }
