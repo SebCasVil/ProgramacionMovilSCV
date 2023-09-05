@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import First from './src/screens/First';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>HELLO WORLD!</Text>
-      <StatusBar style="auto" />
+        <First></First>
     </View>
   );
 }
