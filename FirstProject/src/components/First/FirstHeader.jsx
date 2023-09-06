@@ -31,7 +31,7 @@ export const FirstHeader = () => {
 const styles = StyleSheet.create({
   content: {
     flex: 0.4,
-    backgroundColor: '#E1651B',
+    // backgroundColor: '#E1651B',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',

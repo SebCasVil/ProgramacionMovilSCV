@@ -5,7 +5,8 @@ import First from './src/screens/First';
 export default function App() {
   return (
     <View style={styles.container}>
-        <First></First>
+      <StatusBar style='auto' />
+      <First />
     </View>
   );
 }
@@ -13,7 +14,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#b2b2ff',
+    backgroundColor: '#D76741',
+    // paddingTop: Constants.statusBarHeight,
     alignItems: 'start',
     justifyContent: 'center',
   },

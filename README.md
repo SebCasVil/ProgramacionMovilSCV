@@ -1,2 +1,3 @@
 "# ProgramacionMovilSCV" 
-Autor: Sebastian Castro Villalobos
+Autores: 
+    - Sebastian Castro Villalobos - 19121008
