@@ -2,13 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, StatusBar as ReactStatus, Platform} from 'react-native';
 import Constants from 'expo-constants';
 import { Ionicons } from '@expo/vector-icons';
-import { WebText } from './src/components/WebText/index';
-import { AndroidText } from './src/components/IosText';
+import { WebText } from './src/components/CustomText/CustomText.web';
+import { AndroidText } from './src/components/CustomText/CustomText.android';
 
-const CustomText = Platform.select({
-  web: WebText,
-  android: AndroidText,
-})
+import { CustomText } from './src/components/CustomText/CustomText';
 
 
 // Exportado por defecto (Unicamente se importa esta función cuando se intente importar en otro archivo)

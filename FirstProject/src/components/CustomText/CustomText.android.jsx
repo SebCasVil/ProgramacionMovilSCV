@@ -1,6 +1,6 @@
 import { Text } from "react-native"
 
-export const AndroidText = () => {
+export const CustomText = () => {
     return(
         <>
             <Text>ANDROID</Text>

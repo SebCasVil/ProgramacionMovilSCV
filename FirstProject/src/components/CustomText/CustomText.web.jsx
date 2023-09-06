@@ -1,6 +1,6 @@
 import { Text } from "react-native"
 
-export const WebText = () => {
+export const CustomText = () => {
     return(
         <>
             <Text>WEB</Text>
