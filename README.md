@@ -1,3 +1,4 @@
 "# ProgramacionMovilSCV" 
-Autores: 
-    - Sebastian Castro Villalobos - 19121008
+Integrantes: 
+    Juan Pablo Juárez Castillo - 19121042
+    Sebastian Castro Villalobos - 19121008
