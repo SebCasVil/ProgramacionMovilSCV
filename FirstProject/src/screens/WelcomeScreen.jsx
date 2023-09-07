@@ -1,4 +1,5 @@
-import {ScrollView, StyleSheet, Text, View} from "react-native"
+import {ScrollView, StyleSheet, Text, View, Image} from "react-native"
+import { Card } from "../components/Card"
 
 import {Ionicons} from '@expo/vector-icons'
 
@@ -14,9 +15,17 @@ export const WelcomeScreen = () => {
                 <Text>Chris 👍</Text>
             </Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                <Card isDarkBlue={false} text='Start' iconName='hdd' iconType='Ionicons'/>
+                <Card isDarkBlue={false} text='Start' iconName='hdd' iconType='Ionicons'/>
+                <Card isDarkBlue={false} text='Start' iconName='hdd' iconType='Ionicons'/>
 
             </ScrollView>
-
+            <Text>What are your symptoms?</Text>
+            <ScrollView>
+                <View style={styles.symptompsContainer}>
+                    <Text style={{fontSize: 18, fontWeight: 'bold'}}>I'm fine</Text>
+                </View>
+            </ScrollView>
         </View>
     )
 }
@@ -54,5 +63,13 @@ const styles = StyleSheet.create({
     },
     cartText:{
 
-    }
+    },
+    symptompsContainer:{
+        backgroundColor: 'blue',
+        width: 150,
+        paddingHorizontal: 10,
+        paddingVertical: 15,
+        borderRadius: 10,
+        alignItems: 'center'
+    },
 });
