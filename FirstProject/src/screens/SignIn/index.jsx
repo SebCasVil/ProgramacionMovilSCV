@@ -20,6 +20,7 @@ export default function SignIn({setShowSignIn, setShowSignUp}) {
             </View>
             <View style={{justifyContent: 'flex-start', width: '100%'}}>
                 <Text style={{fontSize: 30, fontWeight: 'bold'}}>Welcome back!</Text>
+                <View style={{backgroundColor:'#FF9136', height: 8, width: 30, borderRadius: 20}}></View>
             </View>
             <View>
                 <Text style={styles.textInput}>Email address</Text>
