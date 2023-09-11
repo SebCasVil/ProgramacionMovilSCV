@@ -20,8 +20,9 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         borderRadius: 20,
         alignItems: 'center',
-        marginTop:15,
+        marginTop:10,
         height: 50,
+        marginHorizontal: 5
     },
     text: {
         fontSize: 18, 
