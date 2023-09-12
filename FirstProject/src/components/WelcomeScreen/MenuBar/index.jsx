@@ -1,5 +1,7 @@
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, TouchableOpacity} from 'react-native';
+import { Ionicons ,AntDesign } from '@expo/vector-icons';
 import BotonGeneral from '../BotonGeneral';
+import { COLORS } from '../../../../constants';
 
 export const MenuBar = ({}) => {
   return (
@@ -7,28 +9,28 @@ export const MenuBar = ({}) => {
       <BotonGeneral
         icon={'home'}
         size={20}
-        backgroundColor={'white'}
-        color={'black'}
+        backgroundColor={'black'}
+        color={'white'}
         circleSize={40}
       />
       <BotonGeneral
         icon={'table'}
         size={20}
-        backgroundColor={'white'}
+        backgroundColor={COLORS.gray}
         color={'black'}
         circleSize={40}
       />
       <BotonGeneral
         icon={'calendar'}
         size={20}
-        backgroundColor={'white'}
+        backgroundColor={COLORS.gray}
         color={'black'}
         circleSize={40}
       />
       <BotonGeneral
         icon={'profile'}
         size={20}
-        backgroundColor={'white'}
+        backgroundColor={COLORS.gray}
         color={'black'}
         circleSize={40}
       />
@@ -42,10 +44,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     borderRadius: 10,
-    padding: 10,
-    margin: 10,
-    borderColor: 'gray',
-    borderWidth: 0.2
+    width: '100%',
 
+  },  
+  iconContainer: {
+    width: 50, 
+    height: 50, 
+    borderRadius: 10, 
+    alignItems: 'center', 
+    justifyContent: 'center',
+    backgroundColor: 'black'
   },
 });

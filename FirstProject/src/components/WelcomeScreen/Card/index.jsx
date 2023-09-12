@@ -1,60 +1,63 @@
 import React from "react";
 import { Text, View, StyleSheet, Image} from "react-native";
-import {Ionicons} from "@expo/vector-icons";
-import {AntDesign} from "@expo/vector-icons";
+import { MaterialIcons } from '@expo/vector-icons';
+import { COLORS } from "../../../../constants";
 
-export const Card = ({isDarkBlue, text, iconName, iconType})=> {
-    const IconColor = isDarkBlue?'#537acd':'white'
-    const CustomIcon = iconType === 'Ionicons' ? <Ionicons name={iconName} size={30} color={IconColor}/> : <AntDesign name={iconName}  size={30} color={IconColor}/> 
-    return(
-        <View>
-            <View style={[styles.cardContainer, isDarkBlue?styles.cardContainerDark:styles.cardContainerLight]}>
-                    <View style={[styles.cardIconContainer, isDarkBlue?styles.cardIconContainerDark:styles.cardIconContainerLight]}>{CustomIcon}
-                    </View>
-                    <Text style={[styles.cardText, isDarkBlue?styles.cardTextDark:styles.cardTextLight]}>{text}</Text>
+export const Card = ({ imagen, tag, name, precio }) => {
+    return (
+        <View style={styles.cardContainer}>
+            <View style={styles.imageContainer}>
+                <Image style={styles.image} source={{ uri: imagen }} />
+            </View>
+            <View style={styles.textos}>
+                <Text style={styles.tag}>{tag}</Text>
+                <Text style={styles.name}>{name}</Text>
+
+                <View style={styles.priceContainer}>
+                    <MaterialIcons name="monetization-on" size={20} color={COLORS.yellow} />
+                    <Text style={styles.precio}>{precio}</Text>
+                </View>
             </View>
         </View>
-    )
-}
-
-const styles = StyleSheet.create({
-    cardContainer:{
-        gap:30,
-        paddingHorizontal: 20,
-        height:200,
-        width:200,
-        borderRadius:40,
-        marginHorizontal: 5,
-        justifyContent: 'space-evenly'
+    );
+  }
+  
+  const styles = StyleSheet.create({
+    cardContainer: {
+      height: 350,
+      width: 200,
+      borderRadius: 40,
+      backgroundColor: 'white',
+      alignItems: 'flex-start',
+      justifyContent: 'flex-end',
+      padding: 30,
     },
-    cardContainerLight:{
-        backgroundColor: '#e6ecff',
+    imageContainer: {
+      width: 150,
+      height: 150,
+      alignItems: 'center',
+      justifyContent: 'center',
     },
-    cardContainerDark:{
-        backgroundColor: '#2362df',
+    image: {
+      width: 150,
+      height: 150,
+      borderRadius: 20
     },
-    cardIconContainer:{
-        width: 50,
-        height: 50,
-        padding: 5,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 52,
+    textos:{
+        justifyContent: 'flex-end',
+        gap: 5,
+        marginTop: 20
     },
-    cardIconContainerLight:{
-        backgroundColor: '#2362df',
+    tag:{
+        color: 'gray'
     },
-    cardIconContainerDark:{
-        backgroundColor: '#e6ecff',
-    },
-    cardText:{
-        fontSize:25,
+    name:{
         fontWeight: 'bold',
+        fontSize: 20
     },
-    cardTextLight:{
-        color: '#48525e'
+    priceContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 5
     },
-    cardTextDark:{
-        color: 'white'
-    },
-})
+  });

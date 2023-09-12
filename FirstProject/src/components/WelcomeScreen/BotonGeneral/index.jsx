@@ -1,11 +1,11 @@
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { Ionicons ,AntDesign } from '@expo/vector-icons';
 
-const BotonGeneral = ({ icon, size, color, backgroundColor, circleSize}) => {
+const BotonGeneral = ({ icon, size, color, backgroundColor}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity>
-        <View style={[styles.iconContainer, { backgroundColor, width:circleSize, height:circleSize, borderRadius:circleSize/2 }]}>
+        <View style={[styles.iconContainer, { backgroundColor}]}>
           <AntDesign name={icon} size={size} color={color} />
         </View>
       </TouchableOpacity>
@@ -20,11 +20,12 @@ const styles = StyleSheet.create({
     borderRadius: 50
   },
   iconContainer: {
-    width: 55, 
-    height: 55, 
-    borderRadius: 27.5, 
+    width: 50, 
+    height: 50, 
+    borderRadius: 10, 
     alignItems: 'center', 
     justifyContent: 'center',
+    backgroundColor: 'black'
   },
 });
 
