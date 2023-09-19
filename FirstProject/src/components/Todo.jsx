@@ -4,13 +4,20 @@ import CustomButton from "./CustomButton";
 import { COLORS } from "../../assets";
 
 
-const Todo = ({name}) => {
+const Todo = ({
+    name,
+     id, 
+     handleDelete,
+     handleComplete,
+     isCompleted
+    }) => {
     return(
-        <View style={styles.container}>
-            <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'white', width: 120}}>{name}</Text>
-            <View style={{flexDirection: 'row', gap: 10}}>
-                <CustomButton text={'Delete'} light width={50}/>
+        <View style={[styles.container, isCompleted && styles.todoCompleted]}>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'white', width: 55}}>{name}</Text>
+            <View style={{flexDirection: 'row', gap: 5}}>
+                <CustomButton text={'Delete'} light width={50} onPress={() => handleDelete(id)}/>
                 <CustomButton text={'Edit'} light width={50}/>
+                <CustomButton text={isCompleted ? 'Done' : 'Complete'} light width={65} onPress={() => handleComplete(id)}/>
             </View>
         </View>
     )
@@ -27,6 +34,10 @@ const styles = StyleSheet.create({
         borderColor: COLORS.borderColor,
         borderWidth: 1,
     },
+    todoCompleted:{
+        backgroundColor: '#CA15AC',
+        borderColor: COLORS.backgroundColor,
+    }
 
 })
 

@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { FlatList, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { FlatList, ImageBackground, StyleSheet, Text, Alert, View } from 'react-native';
 import Todo from './src/components/Todo';
 import CustomButton from './src/components/CustomButton';
 import TodoInput from './src/components/TodoInput';
@@ -20,7 +20,11 @@ export default function App() {
   const[todos, setTodos] = useState([])
 
   const handleAddTodo = () => {
-    if(inputValue === '') return
+    if(inputValue === '') return(handleShowError('Debes ingresar un nombre a la tarea'))
+
+    const existingToDo = todos.some(todo => todo.name.toLowerCase() === inputValue.toLowerCase())
+
+    if (existingToDo) return(handleShowError('Ya existe una tarea con ese nombre'))
 
     setTodos([
         ...todos,
@@ -33,7 +37,32 @@ export default function App() {
     setInputValue('')
   }
 
+const handleShowError = (error,) =>
+  Alert.alert('Error', error, [
+    {
+      text: 'Aceptar',
+      // onPress: 
+    },
 
+  ])
+
+  const handleDeleteToDo = (toDoId) => {
+    const filteredArray = todos.filter(todo => todo.id !== toDoId)
+    setTodos(filteredArray)
+  }
+
+  const handleCompleteToDo = (toDoId) => {
+    const mappedArray = todos.map(todo => {
+      if (todo.id === toDoId){
+        return{
+          ...todo,
+          isCompleted: true
+        }
+      }
+      return todo
+    })
+    setTodos(mappedArray)
+  }
   return (
     <ImageBackground 
       source={IMAGES.backgroundSun}
@@ -53,10 +82,10 @@ export default function App() {
               <FlatList
                   data={todos}
                   keyExtractor={(item) => item.id}
-                  renderItem={(({ item: { name } }) => 
+                  renderItem={(({ item: { name, id, isCompleted } }) => 
                   <View style={styles.toDo}>
                     <Sun/>
-                    <Todo name={name}/>
+                    <Todo name={name} handleDelete={handleDeleteToDo} id={id} handleComplete={handleCompleteToDo} isCompleted={isCompleted}/>
                   </View>  )}
                   style={{width: '100%'}}
               />
