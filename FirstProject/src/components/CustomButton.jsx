@@ -1,10 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { COLORS } from "../../assets";
 
 
-const CustomButton = ({text, onPress, light}) => {
+const CustomButton = ({text, onPress, light, width}) => {
     return(
-        <TouchableOpacity style={[styles.container, light && styles.whiteButton]} onPress={onPress}>
+        <TouchableOpacity style={[styles.container, width={width}, light && styles.whiteButton]} onPress={onPress}>
             <Text style={{color: light ? 'white' : 'black', }}>{text}</Text>
         </TouchableOpacity>
     )
@@ -12,16 +13,16 @@ const CustomButton = ({text, onPress, light}) => {
 
 const styles = StyleSheet.create({
     container: {
-        borderWidth: 1,
         borderRadius: 5,
-        width: 80,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#2A6355'
+        backgroundColor: '#2A0139',
+        borderColor: COLORS.borderColor,
+        borderWidth: 1
+        
     },
     whiteButton:{
         color: 'white',
-        borderColor: 'white'
     }
 
 })
