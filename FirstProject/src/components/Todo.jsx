@@ -1,28 +1,30 @@
 import React from "react";
-import { View } from "react-native";
+import { View, StyleSheet, Text} from "react-native";
+import CustomButton from "./CustomButton";
 
 
 const Todo = ({name}) => {
     return(
         <View style={styles.container}>
-            <Text style={{ fontSize: 20, fontWeight: 'bold'}}></Text>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white'}}>{name}</Text>
+            <View style={{flexDirection: 'row', gap: 10}}>
+                <CustomButton text={'Delete'} light/>
+                <CustomButton text={'Edit'} light/>
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        borderWidth: 1,
+        flexDirection: 'row',
+        marginTop: 30,
+        justifyContent: 'space-between',
+        padding: 15,
         borderRadius: 5,
-        width: 80,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#2A6355'
+        backgroundColor: '#2d705f',
+        borderColor: 'white',
     },
-    whiteButton:{
-        color: 'white',
-        borderColor: 'white'
-    }
 
 })
 

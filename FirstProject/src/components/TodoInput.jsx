@@ -1,23 +1,27 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity, Text, TextInput } from "react-native";
 
 
 const TodoInput = ({value, onChangeText}) => {
     return(
-        <TouchableOpacity style={[styles.container, light && styles.whiteButton]} onPress={onPress}>
-            <Text style={{color: light ? 'white' : 'auto', }}>{text}</Text>
-        </TouchableOpacity>
+        <TextInput
+            value={value}
+            onChangeText={onChangeText}
+            style={styles.container}
+        />
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        borderWidth: 1,
+        height:50,
+        borderWidth: 1, 
         borderRadius: 5,
-        width: 80,
+        width: '70%',
         alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#2A6355'
+        borderColor: 'white',
+        paddingHorizontal: 10,
+        color: 'white',
     },
 
 })
