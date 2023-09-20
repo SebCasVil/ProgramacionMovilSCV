@@ -6,18 +6,27 @@ import { COLORS } from "../../assets";
 
 const Todo = ({
     name,
-     id, 
+     id,
+     created,
+     modified,
      handleDelete,
      handleComplete,
-     isCompleted
+     isCompleted,
+     handleActivaEditar
     }) => {
     return(
         <View style={[styles.container, isCompleted && styles.todoCompleted]}>
-            <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'white', width: 55}}>{name}</Text>
-            <View style={{flexDirection: 'row', gap: 5}}>
-                <CustomButton text={'Delete'} light width={50} onPress={() => handleDelete(id)}/>
-                <CustomButton text={'Edit'} light width={50}/>
-                <CustomButton text={isCompleted ? 'Done' : 'Complete'} light width={65} onPress={() => handleComplete(id)}/>
+            <View style={{flexDirection: 'row'}}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'white', width: 60}}>{name}</Text>
+                <View style={{flexDirection: 'row', gap: 5}}>
+                    <CustomButton text={'Delete'} light width={50} onPress={() => handleDelete(id)}/>
+                    <CustomButton text={'Edit'} light width={50} onPress={() =>handleActivaEditar(id)}/>
+                    <CustomButton text={isCompleted ? 'Done' : 'Complete'} light width={65} onPress={() => handleComplete(id)}/>
+                </View>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+                <Text style={{ fontSize: 10, color: 'white', width: 60}}>Created at: {created}</Text>
+                <Text style={{ fontSize: 10, color: 'white', width: 165}}>{modified === '' ? '' : 'Modified at: '+modified} </Text>
             </View>
         </View>
     )
@@ -25,7 +34,6 @@ const Todo = ({
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 15,
@@ -33,6 +41,7 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.backgroundColor,
         borderColor: COLORS.borderColor,
         borderWidth: 1,
+        gap: 5
     },
     todoCompleted:{
         backgroundColor: '#CA15AC',
