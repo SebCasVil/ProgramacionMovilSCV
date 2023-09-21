@@ -1,119 +1,41 @@
-import {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { FlatList, ImageBackground, StyleSheet, Text, Alert, View } from 'react-native';
+import { FlatList, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import Todo from './src/components/Todo';
 import CustomButton from './src/components/CustomButton';
 import TodoInput from './src/components/TodoInput';
 import Constants from 'expo-constants';
 import Sun from './src/components/Sun';
 import { COLORS, IMAGES } from './assets';
+import { useTodos } from './src/hooks/useTodos';
+import ModalTodo from './src/components/ModalTodo';
 
 export default function App() {
 
+  const {
+    inputValue,
+    setInputValue,
+    todos,
+    handleAddTodo,
+    handleDeleteToDo,
+    handleCompleteToDo,
+    handleEditarTodo,
+    handleActivaEditar,
+    handleMostrarModal,
+    setToDoSelected,
+    setModalVisible,
+    editar,
+    idEditar,
+    modalVisible,
+    toDoSelected
+  } = useTodos()
 
-  // const TODOS = [
-  //   {id:1, name: 'Task 1', isCompleted: false},
-  //   {id:2, name: 'Task 2', isCompleted: false},
-  // ]
-
-  const [inputValue, setInputValue] = useState('')
-  const[todos, setTodos] = useState([])
-  const[editar, setEditar] = useState(false)
-  const[idEditar, setidEditar] = useState('')
-
-  const handleAddTodo = () => {
-    if(inputValue === '') return(handleShowError('Debes ingresar un nombre a la tarea'))
-
-    const existingToDo = todos.some(todo => todo.name.toLowerCase() === inputValue.toLowerCase())
-
-    if (existingToDo) return(handleShowError('Ya existe una tarea con ese nombre'))
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Agregar un cero inicial si el mes es < 10
-    const day = String(currentDate.getDate()).padStart(2, '0'); // Agregar un cero inicial si el día es < 10
-  
-    const formattedCurrentDate = `${year}-${month}-${day}`;
-
-    setTodos([
-        ...todos,
-        {
-        id: new Date().toISOString(),
-        name: inputValue,
-        isCompleted: false,
-        created: formattedCurrentDate,
-        modified: '',
-      }
-    ])
-    setInputValue('')
-  }
-
-const handleShowError = (error,) =>
-  Alert.alert('Error', error, [
-    {
-      text: 'Aceptar',
-      // onPress: 
-    },
-
-  ])
-
-  const handleDeleteToDo = (toDoId) => {
-    const filteredArray = todos.filter(todo => todo.id !== toDoId)
-    setTodos(filteredArray)
-  }
-
-  const handleCompleteToDo = (toDoId) => {
-    const mappedArray = todos.map(todo => {
-      if (todo.id === toDoId){
-        return{
-          ...todo,
-          isCompleted: true
-        }
-      }
-      return todo
-    })
-    setTodos(mappedArray)
-  }
-
-  const handleEditarTodo = (toDoId) => {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Agregar un cero inicial si el mes es < 10
-    const day = String(currentDate.getDate()).padStart(2, '0'); // Agregar un cero inicial si el día es < 10
-  
-    const formattedCurrentDate = `${year}-${month}-${day}`;
-
-    if(inputValue === '') return(handleShowError('Debes ingresar un nombre a la tarea'))
-
-    const existingToDo = todos.some(todo => todo.name.toLowerCase() === inputValue.toLowerCase())
-    if (existingToDo) return(handleShowError('Ya existe una tarea con ese nombre'))
-
-    const editedArray = todos.map(todo => {
-      if (todo.id === toDoId){
-        return{
-          ...todo,
-          name: inputValue,
-          modified: formattedCurrentDate
-        }
-      }
-      return todo
-    })
-    setTodos(editedArray)
-    setEditar(false)
-    setInputValue('')
-  }
-
-  const handleActivaEditar = (toDoId) =>{
-    const todoToEdit = todos.find(todo => todo.id === toDoId)
-    setInputValue(todoToEdit.name)
-    setidEditar(toDoId)
-    setEditar(true)
-  }
 
   return (
     <ImageBackground 
       source={IMAGES.backgroundSun}
       style={{ flex: 1, resizeMode: 'cover' }}
       >
+      <ModalTodo setModalVisible={setModalVisible} modalVisible={modalVisible} toDo={toDoSelected ? toDoSelected : ''}/>
       <View style={styles.container}>
         <View style={{paddingHorizontal: 20, paddingTop: 10}}>
           <Text style={{fontSize: 40, fontWeight: 'bold', textAlign: 'center', color: 'white'}}>To do list</Text>
@@ -131,7 +53,7 @@ const handleShowError = (error,) =>
                   renderItem={(({ item: { name, id, isCompleted, created, modified } }) => 
                   <View style={styles.toDo}>
                     <Sun/>
-                    <Todo name={name} created={created} modified={modified} handleDelete={handleDeleteToDo} id={id} handleComplete={handleCompleteToDo} isCompleted={isCompleted} handleActivaEditar={handleActivaEditar}/>
+                    <Todo name={name} created={created} modified={modified} handleDelete={handleDeleteToDo} id={id} handleComplete={handleCompleteToDo} isCompleted={isCompleted} handleActivaEditar={handleActivaEditar} handleMostrarModal={handleMostrarModal}/>
                   </View>  )}
                   style={{width: '100%'}}
               />

@@ -11,17 +11,19 @@ const Todo = ({
      modified,
      handleDelete,
      handleComplete,
+     handleMostrarModal,
      isCompleted,
      handleActivaEditar
     }) => {
     return(
         <View style={[styles.container, isCompleted && styles.todoCompleted]}>
-            <View style={{flexDirection: 'row'}}>
-                <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'white', width: 60}}>{name}</Text>
+            <View style={{flexDirection: 'row', gap: 10}}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'white', width: 60, height: 40}}>{name}</Text>
                 <View style={{flexDirection: 'row', gap: 5}}>
-                    <CustomButton text={'Delete'} light width={50} onPress={() => handleDelete(id)}/>
-                    <CustomButton text={'Edit'} light width={50} onPress={() =>handleActivaEditar(id)}/>
-                    <CustomButton text={isCompleted ? 'Done' : 'Complete'} light width={65} onPress={() => handleComplete(id)}/>
+                    <CustomButton text={'delete'} light width={40} onPress={() => handleDelete(id)}/>
+                    <CustomButton text={'edit'} light width={40} onPress={() =>handleActivaEditar(id)}/>
+                    <CustomButton text={isCompleted ? 'checksquare' : 'checksquareo'} light width={40} onPress={() => handleComplete(id)}/>
+                    <CustomButton text={'eyeo'} light width={40} onPress={() => handleMostrarModal(id)}/>
                 </View>
             </View>
             <View style={{flexDirection: 'row'}}>
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: 15,
+        padding: 10,
         borderRadius: 5,
         backgroundColor: COLORS.backgroundColor,
         borderColor: COLORS.borderColor,
