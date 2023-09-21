@@ -26,6 +26,10 @@ const ModalTodo = ({ modalVisible, toDo, setModalVisible }) => {
                     {toDo.name}
                   </Text>
                 </View>
+                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10, padding: 10}}>
+                    <Text style={{ color: "white", fontWeight: "bold", fontSize:10}}>ID:</Text>
+                    <Text style={{fontSize:10, color: 'white'}}>{toDo.id}</Text>
+                </View>
                 <View style={styles.dosView}>
                   <View style={styles.lineaView}>
                     <Text style={{ color: "white", fontWeight: "bold" }}>Created at:</Text>
@@ -80,6 +84,7 @@ const styles = StyleSheet.create({
   },
   dosView: {
     padding: 35,
+    paddingTop: 10,
     gap: 10,
   },
   whiteText: {
