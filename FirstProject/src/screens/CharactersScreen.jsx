@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Constants from 'expo-constants';
 import { StatusBar } from 'expo-status-bar';
-import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 import Card from '../components/Card';
 
 export default function CharactersScreen() {
@@ -24,7 +24,6 @@ export default function CharactersScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={{fontWeight: 'bold', fontSize: 20, color: 'white'}}>CHARACTERS</Text>
       <FlatList 
           data={characters}
           renderItem={({item}) =>{
@@ -32,6 +31,14 @@ export default function CharactersScreen() {
               <Card item={item}/>
             )
           }}
+          ListHeaderComponent={<Text style={{fontWeight: 'bold', fontSize: 20, color: 'white'}}>CHARACTERS</Text>}
+          ListFooterComponent={  
+          <View>
+            <Text style={{fontWeight: 'bold', fontSize: 20, color: 'white'}}>Pagination</Text>
+            <Button title='Page 1'></Button>
+            <Button title='Page 2'></Button>
+          </View>
+          }
       />
     </View>
   );
