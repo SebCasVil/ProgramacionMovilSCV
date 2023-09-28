@@ -24,7 +24,7 @@ export default function App() {
                 headerShown: false,
                 headerStyle:{backgroundColor: '#3C3E44'}, 
                 headerTitleStyle:{color: 'white'},
-                headerLeft:  () => <Text>PAPURE</Text>
+                headerLeft:  () => <Text>CUSTOM</Text>
                 }}
               
               >
