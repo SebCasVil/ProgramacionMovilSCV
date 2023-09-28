@@ -1,12 +1,18 @@
 import {Button, StyleSheet, Text, View } from 'react-native';
 import Constants from 'expo-constants';
 import 'react-native-gesture-handler';
+import Header from '../components/Header';
 
 export default function HomeScreen({navigation}) {
+  const {canGoBack, goBack} = navigation
   return (
-    <View style={styles.container}> 
+    <View>
+    <Header/>
+      <View style={styles.container}> 
         <Text>Home!</Text>
         <Button title='Go to login page' onPress={() => navigation.navigate('Login', {name: 'Kir'})}/>
+        <Button title='GO back!' disabled={!canGoBack()} onPress={() => goBack()}></Button>
+      </View>
     </View>
   );
 }

@@ -1,15 +1,27 @@
-import {StyleSheet, Text, View } from 'react-native';
+import {Button, StyleSheet, Text, View } from 'react-native';
 import Constants from 'expo-constants';
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 
-export default function LoginScreen({navigation, route}) {
+
+import { useNavigation } from '@react-navigation/native';
+import Header from '../components/Header';
+
+export default function LoginScreen({ route}) {
   console.log(route)
   const {name} = route.params
+
+  const navigation = useNavigation()
+
+  const {canGoBack, goBack} = navigation
   return (
-    <View style={styles.container}> 
+    <View>
+      <Header/>
+      <View style={styles.container}> 
         <Text>Login!</Text>
         <Text>{name}</Text>
+        <Button title='GO back!' disabled={!canGoBack} onPress={() => goBack()}></Button>
+      </View>
     </View>
   );
 }
