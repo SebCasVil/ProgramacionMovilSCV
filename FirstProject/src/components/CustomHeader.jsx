@@ -1,13 +1,15 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { COLORS } from "../../assets";
 import { Ionicons } from '@expo/vector-icons';
 
-const CustomHeader = ({text, navigation }) => {
+const CustomHeader = ({text, text2, navigation }) => {
     return(
         <View style={styles.container}>
-            <Ionicons name="arrow-back" size={24} color="white" onPress={() => navigation.goBack()}/>
-            <Text style={{color:'white', }}>{text}</Text>
+            <Ionicons name="arrow-back" size={24} color="black" onPress={() => navigation.goBack()}/>
+            <View style={{alignItems: 'center', marginLeft: 50}}>
+                <Text style={{color:'black', fontSize: 30, fontWeight: 'bold' }}>{text}</Text>
+                <Text style={{color:'black', }}>{text2}</Text>
+            </View>
         </View>
     )
 }
@@ -17,10 +19,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderRadius: 5,
         alignItems: 'center',
-        justifyContent: 'space-between',
-        backgroundColor: '#2A0139',
-        borderColor: COLORS.borderColor,
-        borderWidth: 1,
+        justifyContent: 'flex-start',
+        backgroundColor: '#ECDCC2',
         padding: 20
         
     },

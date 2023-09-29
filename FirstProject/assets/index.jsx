@@ -5,5 +5,6 @@ export const COLORS = {
 
 export const IMAGES ={
     sun: require('./sun.jpg'),
-    backgroundSun: require('./retro.jpg')
+    backgroundSun: require('./retro.jpg'),
+    homeImage: require('./Home.png')
 }

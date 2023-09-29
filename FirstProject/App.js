@@ -17,12 +17,14 @@ export default function App() {
           <Stack.Navigator initialRouteName='Home' or>
             <Stack.Screen 
               name='Home' 
-              component={HomeScreen}/>
+              component={HomeScreen}
+              options={{headerShown: false}}
+              />
             <Stack.Screen 
               name='Login' 
               component={LoginScreen} 
-              options={({navigation}) => ({
-                header: () => <CustomHeader text={"HEADER CUSTOM"} navigation={navigation}/>, 
+              options={({navigation, route}) => ({
+                header: () => <CustomHeader text={route.params.text} text2={route.params.text2} navigation={navigation}/>, 
               })}/>
           </Stack.Navigator>
       </View>
