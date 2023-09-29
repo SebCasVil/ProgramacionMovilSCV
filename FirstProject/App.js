@@ -21,10 +21,14 @@ export default function App() {
             initialRouteName='Home' 
             screenOptions=
               {{
-                headerShown: false,
+                headerShown: true,
                 headerStyle:{backgroundColor: '#3C3E44'}, 
                 headerTitleStyle:{color: 'white'},
-                headerLeft:  () => <Text>CUSTOM</Text>
+                // title: 'NOT HOME',
+                // headerRight: () => <Text>HELLO</Text>
+                headerSearchBarOptions:{
+                  placeholder: 'Hello'
+                }
                 }}
               
               >
