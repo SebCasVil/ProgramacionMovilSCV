@@ -1,16 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {Button, StyleSheet, Text, View, Switch, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, FlatList, StatusBar  } from 'react-native';
 import Constants from 'expo-constants';
 import 'react-native-gesture-handler';
 import Header from '../components/Header';
+import EldenCard from '../components/EldenCard';
 
-export default function HomeScreen({navigation}) {
-  const {canGoBack, goBack} = navigation
-  const [isEnabled, setIsEnabled] = useState(false);
-
+export default function HomeScreen() {
+  const[incantations,setIncantations] = useState([])
   const[isFetching,setIsFetching] = useState(false)
 
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
@@ -18,7 +16,9 @@ export default function HomeScreen({navigation}) {
     const fetchData = async () => {
       try {
         setIsFetching(true)
-        const res = await fetch("https://rickandmortyapi.com/api/character")
+        const res = await fetch("https://eldenring.fanapis.com/api/incantations")
+        const data = await res.json()
+        setIncantations(data.data)
         await delay(5000)
         setIsFetching(false)
       }
@@ -32,28 +32,22 @@ export default function HomeScreen({navigation}) {
 
   return (
     <View>
-    <Header/>
+      <StatusBar backgroundColor="#323228" barStyle="light-content" />
       <View style={styles.container}> 
-        <Text>Home!</Text>
-        <Switch
-        trackColor={{false: 'red', true: 'green'}}
-        thumbColor={isEnabled ? 'green' : 'red'}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={toggleSwitch}
-        value={isEnabled}
-        // style={{transform:[{scaleX:5},{scaleY:5}]}}
-        />
-        {isEnabled ? (
-          <Text>Renderizado condicional</Text>
-        ) : null}
         {isFetching ? <View>
-          <ActivityIndicator />
-          <ActivityIndicator size="large" />
-          <ActivityIndicator size="small" color="#0000ff" />
-          <ActivityIndicator size="large" color="#00ff00" />
-        </View> : <Text>Ya cargó!</Text>}
-        <Button title='Go to login page' onPress={() => navigation.navigate('Login', {name: 'Kir'})}/>
-        <Button title='GO back!' disabled={!canGoBack()} onPress={() => goBack()}></Button>
+          <ActivityIndicator size="large" color='#636253' />
+        </View> : 
+        
+        <FlatList 
+          data={incantations}
+          renderItem={({item}) =>{
+            return(
+              <EldenCard item={item}/>
+            )
+          }
+          }
+        />
+        }
       </View>
     </View>
   );
@@ -62,8 +56,9 @@ export default function HomeScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     height: '100%',
-    paddingTop: Constants.statusBarHeight+10,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal: 5,
+    backgroundColor: '#323228',
   },
 });

@@ -21,10 +21,13 @@ export default function App() {
             initialRouteName='Home' 
             screenOptions=
               {{
-                headerShown: false,
-                headerStyle:{backgroundColor: '#3C3E44'}, 
-                headerTitleStyle:{color: 'white'},
-                headerLeft:  () => <Text>CUSTOM</Text>
+                header: () => {
+                  return(
+                    <View style={{backgroundColor: '#323228', justifyContent: 'center', alignItems: 'center', padding: 20,borderWidth: 1, borderColor: '#636253'}}>
+                      <Text style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>Incantations of Elden Ring</Text>
+                    </View>
+                  )
+                }
                 }}
               
               >
@@ -46,6 +49,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: '100%',
-    paddingTop: Constants.statusBarHeight+10,
   },
 });
