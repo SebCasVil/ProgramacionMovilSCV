@@ -1,13 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
-import Third from './src/screens/Third';
+import ThirdContent from '../components/ThirdContent';
+import ThirdHeader from '../components/ThirdHeader';
 
-export default function App() {
+export default function Third() {
 
 
   return (
       <View style={styles.container}>
-        <Third/>
+        <ThirdHeader/>
+        <ThirdContent/>
         <StatusBar style="auto" />
       </View>
   );
@@ -17,7 +19,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#0D0D0D'
+    justifyContent: 'flex-start',
+    marginTop: 50
   },
 });
