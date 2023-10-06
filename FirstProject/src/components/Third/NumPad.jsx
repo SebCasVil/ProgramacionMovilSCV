@@ -1,7 +1,43 @@
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import React, { useContext } from 'react';
+import { AppContext } from '../../context/AppContext';
 
 export default function NumPad() {
+  const { theme } = useContext(AppContext);
 
+  const styles = StyleSheet.create({
+    container: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    row: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+    },
+    button: {
+      width: 100,
+      height: 70,
+      backgroundColor: theme.first,
+      alignItems: 'center',
+      justifyContent: 'center',
+      margin: 2,
+      borderRadius: 25
+    },
+    buttonText: {
+      fontSize: 24,
+      color: theme.text
+    },
+    buttonSend: {
+      width: 300,
+      height: 70,
+      backgroundColor: theme.second,
+      alignItems: 'center',
+      justifyContent: 'center',
+      margin: 2,
+      marginTop: 20,
+      borderRadius: 25
+    }
+  });
 
   return (
       <View style={styles.container}>
@@ -34,43 +70,10 @@ export default function NumPad() {
             ))}
         </View>
         <TouchableOpacity style={styles.buttonSend}>
-            <Text style={{fontSize: 20, fontWeight: 'bold'}}>Send</Text>
+            <Text style={{fontSize: 20, fontWeight: 'bold', color: theme.text2}}>Send</Text>
         </TouchableOpacity>
 
       </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  button: {
-    width: 100,
-    height: 70,
-    backgroundColor: '#1F1F1F',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 2,
-    borderRadius: 25
-  },
-  buttonText: {
-    fontSize: 24,
-    color: 'white'
-  },
-  buttonSend: {
-    width: 300,
-    height: 70,
-    backgroundColor: '#EAF984',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 2,
-    marginTop: 20,
-    borderRadius: 25
-  }
-});
