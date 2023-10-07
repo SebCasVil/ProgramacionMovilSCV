@@ -4,48 +4,36 @@ import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import CharactersScreen from './src/screens/CharactersScreen';
-import CharacterDetailScreen from './src/screens/CharacterDetailScreen';
-
-import HomeScreen from './src/screens/HomeScreen';
 import LoginScreen from './src/screens/LoginScreen';
+import AccountScreen from './src/screens/AccountScreen';
+import DetailsScreen from './src/screens/DetailsScreen';
+import { AuthContextProvider } from './src/context/AuthContext';
 
 const Stack = createStackNavigator()
 
+// unidad2/practica10
+// unidad2/tarea10
+
 export default function App() {
   return (
-
-    <NavigationContainer>
-      <View style={styles.container}> 
-          <Stack.Navigator 
-            initialRouteName='Home' 
-            screenOptions=
-              {{
-                headerShown: false,
-                headerStyle:{backgroundColor: '#3C3E44'}, 
-                headerTitleStyle:{color: 'white'},
-                headerLeft:  () => <Text>CUSTOM</Text>
-                }}
-              
-              >
-
-            <Stack.Screen 
-              name='Home' 
-              component={HomeScreen}
-              options={{
-              }}
-            />
-            <Stack.Screen name='Login' component={LoginScreen}/>
-          </Stack.Navigator>
-      </View>
-    </NavigationContainer>
+    <AuthContextProvider>
+      <NavigationContainer>
+        <View style={styles.container}> 
+            <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false,}}>
+              <Stack.Screen name='Login' component={LoginScreen}/>
+              <Stack.Screen name='Account' component={AccountScreen}/>
+              <Stack.Screen name='Details' component={DetailsScreen}/>
+            </Stack.Navigator>
+        </View>
+      </NavigationContainer>
+    </AuthContextProvider>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: '100%',
-    paddingTop: Constants.statusBarHeight+10,
   },
 });

@@ -1,26 +1,70 @@
-import {Button, StyleSheet, Text, View } from 'react-native';
-import Constants from 'expo-constants';
+import {StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import 'react-native-gesture-handler';
-import { createStackNavigator } from '@react-navigation/stack';
-
-
+import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import Header from '../components/Header';
+import { TextInput } from 'react-native-gesture-handler';
 
-export default function LoginScreen({ route}) {
-  console.log(route)
-  const {name} = route.params
+import { useAuthContext } from '../hooks/useAuthContext';
 
+
+export default function LoginScreen({route}) {
+  const {handleLogin: onLogin} = useAuthContext()
   const navigation = useNavigation()
 
-  const {canGoBack, goBack} = navigation
+  const handleLogin = () => {
+    try {
+      const loginValue = onLogin(username, password)
+      if (loginValue) {
+        setPassword('')
+        setUsername('')
+        return navigation.navigate('Details')
+      }
+
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  /////////////////////////////////////////////7
+
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   return (
     <View>
-      <Header/>
       <View style={styles.container}> 
-        <Text>Login!</Text>
-        <Text>{name}</Text>
-        <Button title='GO back!' disabled={!canGoBack} onPress={() => goBack()}></Button>
+        <Text>Login Screen</Text>
+        <TextInput
+          value={username}
+          onChangeText={(value) => setUsername(value)}
+          placeholder='Introduce tu usuario'
+          style={{
+            borderWidth: 1,
+            borderRadius: 15,
+            padding: 15,
+            height: 50, 
+            width: '90%',
+            margin: 10
+
+          }}
+        />
+        <TextInput
+          value={password}
+          onChangeText={(value) => setPassword(value)}
+          placeholder='Introduce tu contraseña'
+          style={{
+            borderWidth: 1,
+            borderRadius: 15,
+            padding: 15,
+            height: 50, 
+            width: '90%',
+            margin: 10
+
+          }}
+          secureTextEntry
+        />
+        <TouchableOpacity style={{padding: 20, borderWidth: 1}} onPress={handleLogin}>
+            <Text>Iniciar sesión</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -29,7 +73,6 @@ export default function LoginScreen({ route}) {
 const styles = StyleSheet.create({
   container: {
     height: '100%',
-    paddingTop: Constants.statusBarHeight+10,
     alignItems: 'center',
     justifyContent: 'center'
   },
