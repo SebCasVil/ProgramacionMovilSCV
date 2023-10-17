@@ -25,6 +25,7 @@ const Draw = createDrawerNavigator()
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer'
 
 import { useAuthContext } from './src/hooks/useAuthContext';
+import WaitScreen from './src/screens/WaitScreen';
 // unidad3/practica1
 
 
@@ -124,19 +125,23 @@ function HomeTabScreen({ navigation }) {
 }
 
 
-export default function App() {
+export default function Navigator() {
   return (
-    <AuthContextProvider>
       <NavigationContainer>
-          <Stack.Navigator initialRouteName='Start' screenOptions={{headerShown: false,}}>
-            <Stack.Screen name='Login' component={LoginScreen}/>
-            <Stack.Screen name='SignUp' component={SignUpScreen}/>
-            <Stack.Screen name='Start' component={StartScreen}/>
-            <Stack.Screen name='Home1' component={HomeDrawer}/>
-          </Stack.Navigator>
+          {Base()}
       </NavigationContainer>
-    </AuthContextProvider>
   )
 }
 
+function Base () {
+  return(
+    <Stack.Navigator initialRouteName='Wait' screenOptions={{headerShown: false,}}>
+      <Stack.Screen name='Login' component={LoginScreen}/>
+      <Stack.Screen name='Wait' component={WaitScreen}/>
+      <Stack.Screen name='SignUp' component={SignUpScreen}/>
+      <Stack.Screen name='Start' component={StartScreen}/>
+      <Stack.Screen name='Home1' component={HomeDrawer}/>
+    </Stack.Navigator>
+  )
+}
 
