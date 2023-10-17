@@ -9,7 +9,7 @@ export default function LoginScreen({route}) {
   const navigation = useNavigation()
   const {navigate} = useNavigation()
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!username || !password) {
       Alert.alert('Campos vacíos', 'Por favor, complete todos los campos');
       return;

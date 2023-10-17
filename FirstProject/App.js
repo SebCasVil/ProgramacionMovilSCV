@@ -25,8 +25,7 @@ const Draw = createDrawerNavigator()
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer'
 
 import { useAuthContext } from './src/hooks/useAuthContext';
-// unidad2/practica10
-// unidad2/tarea10
+// unidad3/practica1
 
 
 function LogOut({navigation}) {
