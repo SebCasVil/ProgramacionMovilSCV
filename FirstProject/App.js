@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import CustomButton from './src/components/CustomButton';
 import { useReducer, useState } from 'react';
 
@@ -128,7 +128,11 @@ export default function App() {
       </View>
       <View style={styles.row}>
         <CustomButton text='0' role='number' onPress={() => handleSelectNumber(0)}/>
-        <CustomButton text='=' role='operator' onPress={() => handleCalculate()}/>
+        <TouchableOpacity style={styles.igual} onPress={() => handleCalculate()}>
+            <Text style={{fontSize: 30, color: 'white', fontWeight: 'bold'}}>
+                =
+            </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -138,13 +142,30 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
   },
   row : {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    width: '100%',
+    marginLeft: 20
   },
   result: {
     fontSize: 80,
     textAlign: 'right'
-  }
+  },
+  text : {
+    fontSize: 80,
+    textAlign: 'right',
+    width: '100%',
+    marginRight: 100
+  },
+    igual: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 160,
+    height: 80,
+    borderRadius: 50,
+    margin: 2.5,
+    backgroundColor: '#B05FFF'
+  },
 });

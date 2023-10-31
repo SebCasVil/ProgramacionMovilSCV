@@ -4,9 +4,9 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 export default function CustomButton({text, role, onPress}) {
   return (
     <TouchableOpacity 
-    style={[styles.container, role === "number" ? styles.numberContainer : styles.operatorContainer]}
+    style={[styles.container, role === "number" ? styles.numberContainer : role === "operator" ? styles.operatorContainer : styles.operatorContainer2]}
     onPress={onPress}>
-        <Text style={{fontSize: 20}}>
+        <Text style={{fontSize: 20, color: 'white', fontWeight: 'bold'}}>
             {text}
         </Text>
     </TouchableOpacity>
@@ -17,17 +17,19 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
-    width: 70,
-    height: 70,
-    borderRadius: 15,
+    width: 80,
+    height: 80,
+    borderRadius: 50,
     margin: 2.5
   },
   numberContainer: {
-    backgroundColor: 'blue'
+    backgroundColor: '#525F7D'
   },
   operatorContainer: {
-    backgroundColor: 'gray'
+    backgroundColor: '#B05FFF'
+  },
+  operatorContainer2: {
+    backgroundColor: '#D57C52'
   }
 
 });
