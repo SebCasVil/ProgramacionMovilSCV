@@ -20,10 +20,10 @@ const Todo = ({
             <View style={{flexDirection: 'row', gap: 10}}>
                 <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'white', width: 60, height: 40}}>{name}</Text>
                 <View style={{flexDirection: 'row', gap: 5}}>
-                    <CustomButton text={'delete'} light width={40} onPress={() => handleDelete(id)}/>
-                    <CustomButton text={'edit'} light width={40} onPress={() =>handleActivaEditar(id)}/>
-                    <CustomButton text={isCompleted ? 'checksquare' : 'checksquareo'} light width={40} onPress={() => handleComplete(id)}/>
-                    <CustomButton text={'eyeo'} light width={40} onPress={() => handleMostrarModal(id)}/>
+                    <CustomButton text={'delete'} light width={40} onPress={() => handleDelete()}/>
+                    <CustomButton text={'edit'} light width={40} onPress={() =>handleActivaEditar()}/>
+                    <CustomButton text={isCompleted ? 'checksquare' : 'checksquareo'} light width={40} onPress={() => handleComplete()}/>
+                    <CustomButton text={'eyeo'} light width={40} onPress={() => handleMostrarModal()}/>
                 </View>
             </View>
             <View style={{flexDirection: 'row'}}>

@@ -11,9 +11,9 @@ const ModalTodo = ({ modalVisible, toDo, setModalVisible }) => {
         animationType="slide"
         transparent={true}
         visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(false);
-        }}
+        onRequestClose={() => 
+          setModalVisible()
+        }
       >
         <View style={styles.overlay}>
           <View style={styles.modalView}>
@@ -48,7 +48,7 @@ const ModalTodo = ({ modalVisible, toDo, setModalVisible }) => {
                     </Text>
                   </View>
                   <View style={{ width: "100%", alignItems: "center" }}>
-                    <CustomButton text={"eyeo"} light width={40} onPress={() => setModalVisible(false)} />
+                    <CustomButton text={"eyeo"} light width={40} onPress={() => setModalVisible()} />
                   </View>
                 </View>
               </>
